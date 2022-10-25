@@ -1,0 +1,171 @@
+/* Reset */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    background-color: #1a1c20;
+
+}
+
+/* -------- Pantalla de Mascota -------- */
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+h1 {
+    color: white;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 3.7rem;
+    letter-spacing: 0.3rem;
+    margin-top: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: white;
+    font-family: 'Luckiest Guy', cursive;
+    letter-spacing: 0.2rem;
+    margin: 2rem auto;
+}
+
+label.tarjeta-mokepon {
+    background: #161414;
+    box-shadow: 0px 1px 11px 0px #6a68684d;
+}
+
+.tarjetas {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tarjeta-mokepon:hover {
+    box-shadow: 0px 0px 11px 3px #d3d2d277;
+}
+
+.tarjeta-mokepon p {
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+input {
+    display: none;
+}
+
+input:checked + label {
+    background-color: #c84630;
+}
+
+#boton-mascota {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: #C84630;
+    border-color: #C84630;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------- Seleccionar ataque -------- */
+
+#seleccionar-ataque {
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#botones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
+}
+
+.boton-ataque {
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    background: #C84630;
+    border-color: #C84630;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#mensajes {
+    width: 30rem;
+    background: #161414;
+    margin: 1rem 0 2rem 0;
+    padding: 1rem;
+    box-shadow: 1px 1px 11px 0px #6a68684d;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mensajes p {
+    font-size: 1.5rem;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+}
+
+#boton-reiniciar {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    padding: 0.7rem;
+}
+
+.ataques {
+    display: grid;
+    grid-template-columns: 220px 220px;
+    background: #161414;
+    margin-bottom: 2rem;
+}
+
+.ataques p {
+    margin: 0.7rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+}
+
+#vidas-jugador, #vidas-enemigo {
+    font-size: 55px;
+}
+
+/* -------- Responsive -------- */
+
+@media (max-width: 360px) {
+
+    #botones {
+        grid-template-columns: 1fr;
+    }
+
+    .ataques {
+        grid-template-columns: 320px;
+    }
+
+    #mensajes {
+        width: 20rem;
+    }
+}

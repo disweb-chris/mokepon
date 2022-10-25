@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>¡MOKEPON!</title>
+
+        <link rel="stylesheet" href="style/styles.css">
+        <!-- Link font --> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        
+    </head>
+
+    <body>
+
+        <div class="background">
+
+            <section id="seleccionar-mascota">
+                <!-- ------- Pantalla de Seleccion de Mokepon ------- --> 
+                <h1>¡MOKEPON!</h1>
+
+                <h2>Elige tu mascota:</h2>
+
+                <div class="tarjetas">
+                    <!-- ------- Tarjetas de Mokepones ------- --> 
+                    <input type="radio" name="mascota" id="hipodoge" />
+                    <label class="tarjeta-mokepon" for="hipodoge">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                        <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_kullgmck.json"  background="#D3CB7A"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                        <p>Hipodoge</p>
+                    </label>
+                    
+                    <input type="radio" name="mascota" id="capipepo" />
+                    <label class="tarjeta-mokepon" for="capipepo">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                        <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_gs9tkudw.json"  background="#E2F497"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                        <p>Capipepo</p>
+                    </label>
+                    
+                    <input type="radio" name="mascota" id="ratigueya" />
+                    <label class="tarjeta-mokepon" for="ratigueya">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                        <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_y7jnfzhh.json"  background="#D6CDEE"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                        <p>Ratigueya</p>
+                    </label>
+
+                </div>
+
+                <button id="boton-mascota">Seleccionar</button>
+
+            </section>
+
+            <!-- ------- Pantalla de Seleccion de Ataque ------- --> 
+            <section id="seleccionar-ataque">
+
+                <h1>¡MOKEPON!</h1>
+
+                <h2>Elige tu ataque:</h2>
+
+                <div id="botones">
+                    <button class="boton-ataque" id="boton-fuego">Fuego 🔥</button>
+                    <button class="boton-ataque" id="boton-agua">Agua 💧</button>
+                    <button class="boton-ataque" id="boton-tierra">Tierra 🌱</button>
+                </div>
+
+                <!-- ------- Seccion de mensajes ------- --> 
+                <div id="mensajes">
+                    <p id="resultado">🔥 💧 🌱</p>
+
+                    <section id="reiniciar">        
+                        <button id="boton-reiniciar">Reiniciar</button>        
+                    </section>                        
+                </div>                    
+                    
+                <!-- ------- Seccion de ataques ------- --> 
+                <div class="ataques">
+
+                    <div>
+                        <p id="vidas-jugador">3</p>
+                        <p id="mascotaJugador"></p>
+                        <div id="ataques-del-jugador"></div>
+                    </div>
+
+                    <div>
+                        <p id="vidas-enemigo">3</p>
+                        <p id="mascotaEnemigo"></p>
+                        <div id="ataques-del-enemigo"></div>
+                    </div>
+                
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- Javascript --> 
+        <script src="js/mokepon.js"></script>
+
+    </body>
+</html>
