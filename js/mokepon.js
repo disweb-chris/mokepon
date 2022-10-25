@@ -22,30 +22,37 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 
 let mokepones = []
 let ataqueJugador 
 let ataqueEnemigo
+let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 
 // Clase para Mokepones
 
 class Mokepon {
-    constructor(nombre, foto, vida, lottie) {
+    constructor(id, nombre, foto, vida, fondo) {
+        this.id =id
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
-        this.lottie = lottie
+        this.fondo = fondo
         this.ataques = []
     }
 }
 
-let hipodoge = new Mokepon('Hipodoge', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', 5, 'https://assets10.lottiefiles.com/private_files/lf30_kullgmck.json')
+// Info mokepon
 
-let capipepo = new Mokepon('Capipepo', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', 5, 'https://assets9.lottiefiles.com/private_files/lf30_gs9tkudw.json')
+let hipodoge = new Mokepon( 'hipodoge','Hipodoge', 'https://assets10.lottiefiles.com/private_files/lf30_kullgmck.json', 5,  '#D3CB7A' )
 
-let ratigueya = new Mokepon('Ratigueya', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', 5, 'https://assets4.lottiefiles.com/private_files/lf30_y7jnfzhh.json')
+let capipepo = new Mokepon( 'capipepo', 'Capipepo', 'https://assets9.lottiefiles.com/private_files/lf30_gs9tkudw.json', 5,  '#E2F497' )
+
+let ratigueya = new Mokepon( 'ratigueya', 'Ratigueya', 'https://assets4.lottiefiles.com/private_files/lf30_y7jnfzhh.json', 5,  '#D6CDEE' )
+
+// Ataques
 
 hipodoge.ataques.push(
     { nombre: 'Fuego 🔥', id: 'boton-fuego'},
@@ -71,13 +78,26 @@ ratigueya.ataques.push(
     { nombre: 'Tierra 🌱', id: 'boton-tierra'},
 )
 
-
+mokepones.push(hipodoge, capipepo, ratigueya)
 
 // Iniciar juego
 
 function iniciarJuego() {
     
     sectionSeleccionarAtaque.style.display = 'none'
+
+    mokepones.forEach( (mokepon) => {
+        opcionDeMokepones = `
+            <input type="radio" name="mascota" id=${mokepon.id} />
+            <label class="tarjeta-mokepon" for=${mokepon.id}>
+                <lottie-player src=${mokepon.foto} background=${mokepon.fondo}  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                <p>${mokepon.nombre}</p>
+            </label>
+            `
+
+    contenedorTarjetas.innerHTML += opcionDeMokepones
+    })
+
     sectionReiniciar.style.display = 'none'
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
