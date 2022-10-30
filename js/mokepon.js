@@ -8,9 +8,6 @@ const botonTierra = document.getElementById('boton-tierra')
 const botonReiniciar = document.getElementById('boton-reiniciar')
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-const inputHipodoge = document.getElementById('hipodoge')
-const inputCapipepo = document.getElementById('capipepo')
-const inputRatigueya = document.getElementById('ratigueya')
 const spanMascotaJugador = document.getElementById('mascotaJugador')
 
 const spanMascotaEnemigo = document.getElementById('mascotaEnemigo')
@@ -28,15 +25,17 @@ let mokepones = []
 let ataqueJugador 
 let ataqueEnemigo
 let opcionDeMokepones
+let inputHipodoge
+let inputCapipepo
+let inputRatigueya
 let vidasJugador = 3
 let vidasEnemigo = 3
 
-// Clase para Mokepones
+// Clase para Mokepones con sus atributos
 
 class Mokepon {
-    constructor(id, nombre, foto, vida, fondo) {
+    constructor(id, foto, vida, fondo) {
         this.id =id
-        this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.fondo = fondo
@@ -44,13 +43,13 @@ class Mokepon {
     }
 }
 
-// Info mokepon
+// Info mokepon (Aca se carga la informacion de cada personaje)
 
-let hipodoge = new Mokepon( 'hipodoge','Hipodoge', 'https://assets10.lottiefiles.com/private_files/lf30_kullgmck.json', 5,  '#D3CB7A' )
+let hipodoge = new Mokepon( 'Hipodoge', 'https://assets10.lottiefiles.com/private_files/lf30_kullgmck.json', 5,  '#D3CB7A' )
 
-let capipepo = new Mokepon( 'capipepo', 'Capipepo', 'https://assets9.lottiefiles.com/private_files/lf30_gs9tkudw.json', 5,  '#E2F497' )
+let capipepo = new Mokepon( 'Capipepo', 'https://assets9.lottiefiles.com/private_files/lf30_gs9tkudw.json', 5,  '#E2F497' )
 
-let ratigueya = new Mokepon( 'ratigueya', 'Ratigueya', 'https://assets4.lottiefiles.com/private_files/lf30_y7jnfzhh.json', 5,  '#D6CDEE' )
+let ratigueya = new Mokepon( 'Ratigueya', 'https://assets4.lottiefiles.com/private_files/lf30_y7jnfzhh.json', 5,  '#D6CDEE' )
 
 // Ataques
 
@@ -91,11 +90,16 @@ function iniciarJuego() {
             <input type="radio" name="mascota" id=${mokepon.id} />
             <label class="tarjeta-mokepon" for=${mokepon.id}>
                 <lottie-player src=${mokepon.foto} background=${mokepon.fondo}  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
-                <p>${mokepon.nombre}</p>
+                <p>${mokepon.id}</p>
             </label>
             `
 
     contenedorTarjetas.innerHTML += opcionDeMokepones
+
+        inputHipodoge = document.getElementById('Hipodoge')
+        inputCapipepo = document.getElementById('Capipepo')
+        inputRatigueya = document.getElementById('Ratigueya')
+
     })
 
     sectionReiniciar.style.display = 'none'
@@ -117,11 +121,11 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarAtaque.style.display = 'flex'    
     
     if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = 'Hipodoge'
+        spanMascotaJugador.innerHTML = inputHipodoge.id
     } else if (inputCapipepo.checked) {
-        spanMascotaJugador.innerHTML = 'Capipepo'
+        spanMascotaJugador.innerHTML = inputCapipepo.id
     } else if (inputRatigueya.checked) {
-        spanMascotaJugador.innerHTML = 'Ratigueya'
+        spanMascotaJugador.innerHTML = inputRatigueya.id
     } else {
         alert('Selecciona una mascota')
     }
@@ -131,15 +135,9 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMascotaEnemigo() {
 
-    let mascotaAleatorio = aleatorio(1,3)
+    let mascotaAleatorio = aleatorio(0, mokepones.length -1) // De esta manera toma el valor de la cantidad de mokepones que hay
     
-    if (mascotaAleatorio == 1) {
-        spanMascotaEnemigo.innerHTML = 'Hipodoge'
-    } else if (mascotaAleatorio == 2) {
-        spanMascotaEnemigo.innerHTML = 'Capipepo'
-    } else {
-        spanMascotaEnemigo.innerHTML = 'Ratigueya'
-    }
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].id
 }
 
 // Funcion numero aleatorio
