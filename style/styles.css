@@ -106,7 +106,7 @@ input:checked + label {
     margin-bottom: 1.5rem;
     font-size: 2rem;
     background: #C84630;
-    border-color: #C84630;
+    border-color: transparent;
     color: white;
     font-family: 'Ubuntu', sans-serif;
 }

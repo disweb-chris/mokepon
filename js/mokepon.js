@@ -21,7 +21,7 @@ const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 const contenedorAtaques =  document.getElementById('contenedorAtaques')
 
 let mokepones = []
-let ataqueJugador 
+let ataqueJugador = []
 let ataqueEnemigo
 let opcionDeMokepones
 let inputHipodoge
@@ -32,6 +32,7 @@ let ataquesMokepon
 let botonFuego
 let botonAgua
 let botonTierra
+let botones = []
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -55,7 +56,7 @@ let capipepo = new Mokepon( 'Capipepo', 'https://assets9.lottiefiles.com/private
 
 let ratigueya = new Mokepon( 'Ratigueya', 'https://assets4.lottiefiles.com/private_files/lf30_y7jnfzhh.json', 5,  '#D6CDEE' )
 
-// Ataques
+// Ataques Mokepones
 
 hipodoge.ataques.push(
     { nombre: 'Fuego 🔥', id: 'boton-fuego'},
@@ -113,7 +114,7 @@ function iniciarJuego() {
     botonReiniciar.addEventListener('click', reiniciarJuego)
 }
 
-// Seleccion de mascotas
+// Seleccion de mascota jugador
 
 function seleccionarMascotaJugador() {
 
@@ -137,6 +138,8 @@ function seleccionarMascotaJugador() {
     seleccionarMascotaEnemigo()
 }
 
+// Funcionamiento Ataques
+
 function extraerAtaques(mascotaJugador) {
     let ataques
     for (let i = 0; i < mokepones.length; i++) {
@@ -151,7 +154,7 @@ function extraerAtaques(mascotaJugador) {
 function mostrarAtaques(ataques) {
     ataques.forEach((ataque) => {
         ataquesMokepon = `
-        <button id=${ataque.id} class="boton-ataque">${ataque.nombre}</button>
+        <button id=${ataque.id} class="boton-ataque BAtaque">${ataque.nombre}</button>
         `
         contenedorAtaques.innerHTML += ataquesMokepon
     })
@@ -160,39 +163,43 @@ function mostrarAtaques(ataques) {
     botonAgua = document.getElementById('boton-agua')
     botonTierra = document.getElementById('boton-tierra')
 
-    botonFuego.addEventListener('click', ataqueFuego)    
-    botonAgua.addEventListener('click', ataqueAgua)    
-    botonTierra.addEventListener('click', ataqueTierra)
+    botones = document.querySelectorAll('.BAtaque')
 }
+
+function secuenciaAtaque() {
+    botones.forEach((boton) => {
+        boton.addEventListener('click', (e) => {
+            if (e.target.textContent === 'Fuego 🔥' ) {
+                ataqueJugador.push('Fuego 🔥')
+                console.log(ataqueJugador)
+                boton.style.background = '#b27b20'
+            } else if (e.target.textContent === 'Agua 💧') {
+                ataqueJugador.push('Agua 💧')
+                console.log(ataqueJugador)
+                boton.style.background = '#00a5ac'
+            } else {
+                ataqueJugador.push('Tierra 🌱')
+                console.log(ataqueJugador)
+                boton.style.background = '#568a1e'
+            }
+        })
+    })
+}
+
+// Seleccion de mascota enemigo
 
 function seleccionarMascotaEnemigo() {
 
     let mascotaAleatorio = aleatorio(0, mokepones.length -1) // De esta manera toma el valor de la cantidad de mokepones que hay
     
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].id
+    secuenciaAtaque()
 }
 
 // Funcion numero aleatorio
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
-// Botones
-
-function ataqueFuego() {
-    ataqueJugador = 'FUEGO 🔥'
-    ataqueAleatorioEnemigo()
-}
-
-function ataqueAgua() {
-    ataqueJugador = 'AGUA 💧'
-    ataqueAleatorioEnemigo()
-}
-
-function ataqueTierra() {
-    ataqueJugador = 'TIERRA 🌱'
-    ataqueAleatorioEnemigo()
 }
 
 // Reiniciar Juego
