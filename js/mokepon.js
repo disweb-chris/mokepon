@@ -178,14 +178,17 @@ function secuenciaAtaque() {
                 ataqueJugador.push('Fuego 🔥')
                 console.log(ataqueJugador)
                 boton.style.background = '#b27b20'
+                boton.disabled = true
             } else if (e.target.textContent === 'Agua 💧') {
                 ataqueJugador.push('Agua 💧')
                 console.log(ataqueJugador)
                 boton.style.background = '#00a5ac'
+                boton.disabled = true
             } else {
                 ataqueJugador.push('Tierra 🌱')
                 console.log(ataqueJugador)
                 boton.style.background = '#568a1e'
+                boton.disabled = true
             }
             ataqueAleatorioEnemigo() 
         })
@@ -305,12 +308,6 @@ function crearMensajeFinal(resultadoFinal) {
     
     let parrafo = document.createElement('p')
     sectionMensajes.innerHTML = resultadoFinal
-
-    botonFuego.disabled = true
-
-    botonAgua.disabled = true
-
-    botonTierra.disabled = true
 
     sectionReiniciar.style.display = 'block'
 }

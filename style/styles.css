@@ -167,10 +167,18 @@ input:checked + label {
     }
 
     .ataques {
-        grid-template-columns: 320px;
+        grid-template-columns: 180px 180px;
+        grid-template-rows: 100px 100px;
     }
 
     #mensajes {
         width: 20rem;
     }
+
+    .boton-ataque {
+        padding: 0.2rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
 }
